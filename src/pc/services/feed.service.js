@@ -1,14 +1,14 @@
-const BASE_URL = require("./../config/api.conf");
+const { FEED_BASE_URL } = require("./../config/api.conf");
 
 module.exports = {
-  title: "feed相关服务",
+  name: "feed相关服务",
   version: "1.0.0",
   status: "online",
   type: "https",
   base_url: {
-    online: BASE_URL.FEED_BASE_URL
+    online: FEED_BASE_URL
   },
-  interfaces: [
+  services: [
     {
       name: "feed描述",
       id: "feed.des",
@@ -31,5 +31,8 @@ module.exports = {
       },
       method: "post"
     }
-  ]
+  ],
+  combo: {
+    getMyData: ["feed.des", "feed.feedList"]
+  }
 };

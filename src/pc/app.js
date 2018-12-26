@@ -1,12 +1,6 @@
-const Koa = require("koa");
-const app = new Koa();
+const services = require("./services/api.service");
+const ServiceBroker = require("./broker");
 
-app.use(ctx => {
-  ctx.body = "ctxbody";
-});
+const broker = new ServiceBroker();
 
-const port = 3002;
-
-app.listen(port, () => {
-  console.log(`Listen on ${port}`);
-});
+broker.createService(services);
